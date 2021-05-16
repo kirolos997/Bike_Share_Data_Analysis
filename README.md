@@ -1,5 +1,5 @@
 ![alt text](https://miro.medium.com/max/825/0*Dgkc35WIkcAVHbMC.jpg)
-# Bike_Share_Data_Analysis
+# Bike Share Data Analysis Provided by Udacity
 This is a repo for the professional Data Analysis Professional track on Udacity
 
 # Problem Statement. 
