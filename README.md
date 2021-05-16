@@ -2,7 +2,12 @@
 # Bike_Share_Data_Analysis
 This is a repo for the professional Data Analysis Professional track on Udacity
 
-# Problem Description
+# Problem Statement. 
+In this project, you will make use of Python to explore data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington. You will write code to import the data and answer interesting questions about it by computing descriptive statistics. You will also write a script that takes in raw input to create an interactive experience in the terminal to present these statistics.  
+
+
+
+# Solutions provided by the repo
 *Interactive type:
 -Would you like to see data for Chicago, New York, or Washington?  
 
@@ -22,7 +27,13 @@ This is a repo for the professional Data Analysis Professional track on Udacity
 # Requirements
 1- Python environment. 
 
-2- Pandas library. 
+2- Pandas library.  
+
+3-A terminal application (Terminal on Mac and Linux or Cygwin on Windows).
+
+
+
+
 
 
 
