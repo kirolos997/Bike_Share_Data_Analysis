@@ -9,14 +9,14 @@ CITY_DATA = {'chicago': 'chicago.csv',
 
 city_names = {1: 'chicago', 2: 'new york city', 3: 'washington'}
 
-month_names = {1: 'January', 2: 'February', 3: 'March',
-               4: 'April', 5: 'May', 6: 'June',
-               7: 'July', 8: 'August', 9: 'September',
-               10: 'October', 11: 'November', 12: 'December', 13: 'no month filter'}
+month_names = {1: 'january', 2: 'february', 3: 'march',
+               4: 'april', 5: 'may', 6: 'june',
+               7: 'july', 8: 'august', 9: 'september',
+               10: 'october', 11: 'november', 12: 'december', 13: 'all'}
 
-days_names = {1: 'Saturday', 2: 'Sunday', 3: 'Monday',
-              4: 'Tuesday', 5: 'Wednesday', 6: 'Thursday',
-              7: 'Friday', 8: 'all'}
+days_names = {1: 'saturday', 2: 'sunday', 3: 'monday',
+              4: 'tuesday', 5: 'wednesday', 6: 'thursday',
+              7: 'friday', 8: 'all'}
 
 
 def get_filters():
@@ -63,7 +63,7 @@ def get_filters():
     while True:
         print('Secondly, could you specify month index : \n')
         print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n8 for {}\n9 for {}\n10 for {}\n11 for {}\n12 for {}\n13 for {}".format(
-            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'all'))
+            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'no filter'))
         user_input = input()
         try:
             month_index = int(user_input)
@@ -87,7 +87,7 @@ def get_filters():
     while True:
         print('Finally, could you specify day of week index : \n')
         print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n8 for {}".format(
-            'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'all'))
+            'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'no filter'))
         user_input = input()
         try:
             day_index = int(user_input)
@@ -214,13 +214,13 @@ def user_stats(df):
 def main():
     while True:
         city, month, day = get_filters()
-        print(city)
-        print(month)
-        print(day)
+        df = load_data(city, month, day)
+
+        print(df)
+
         break
 
         """
-        df = load_data(city, month, day)
         print(df)
         time_stats(df)
         station_stats(df)
