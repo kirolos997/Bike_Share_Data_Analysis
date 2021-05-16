@@ -179,10 +179,16 @@ def station_stats(df):
     start_time = time.time()
 
     # display most commonly used start station
+    common_start = df['Start Station'].mode()[0]
+    print(common_start)
 
     # display most commonly used end station
+    common_end = df['End Station'].mode()[0]
+    print(common_end)
 
     # display most frequent combination of start station and end station trip
+    print(df.loc[(df['Start Station'] == common_start)
+                 & (df['End Station'] == common_end)])
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -224,12 +230,13 @@ def main():
         df = load_data(city, month, day)
         time_stats(df)
         print(df)
+        station_stats(df)
 
         break
 
         """
        
-        station_stats(df)
+       
         trip_duration_stats(df)
         user_stats(df)
 
