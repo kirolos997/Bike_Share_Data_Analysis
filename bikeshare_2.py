@@ -264,7 +264,38 @@ def user_stats(df):
 
 
 def display_raw_data(df):
-    print('l')
+    index = 0
+    step = 5
+
+    while True:
+
+        # Taking input from the user
+        decision = input(
+            "Please select 'yes' to print 5 raw data, 'no' to terminate\n").lower()
+
+        if (decision in ['no', 'yes']):
+            # the case where the user provides valid input and the step in less than the size of data frame
+            if decision == 'yes' and (step < df.shape[0]):
+                print(df[index:step])
+                index = step
+                step += 5
+            else:
+
+                # the case where the user needs to terminate
+                if(decision == 'no'):
+                    break
+
+                 # the case where the step exceeds the file of the data frame
+                 # i am going the print the remaining rows till the end of the data frame then break
+                elif(step > df.shape[0]):
+                    print(
+                        "Your step exceeds file size, Printing the Remaining data if exsists\n")
+                    print(df[index:])
+                    break
+
+        # the case where the user enters a wrong option
+        else:
+            print("invalid input, try again\n")
 
 
 def main():
@@ -276,19 +307,10 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
-        break
-
-        """
-       
-       
-      
-       
-
+        display_raw_data(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-"""
 
 
 if __name__ == "__main__":
