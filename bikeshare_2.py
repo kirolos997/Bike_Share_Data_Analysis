@@ -7,6 +7,17 @@ CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
 
+city_names = {1: 'chicago', 2: 'new york city', 3: 'washington'}
+
+month_names = {1: 'January', 2: 'February', 3: 'March',
+               4: 'April', 5: 'May', 6: 'June',
+               7: 'July', 8: 'August', 9: 'September',
+               10: 'October', 11: 'November', 12: 'December', 13: 'no month filter'}
+
+days_names = {1: 'Saturday', 2: 'Sunday', 3: 'Monday',
+              4: 'Tuesday', 5: 'Wednesday', 6: 'Thursday',
+              7: 'Friday', 8: 'all'}
+
 
 def get_filters():
     """
@@ -17,12 +28,82 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
+    city = ''
+    month = ''
+    day = ''
+
     print('Hello! Let\'s explore some US bikeshare data!')
+
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    print('You can terminate the process at any stage\n')
+    while True:
+        print('First, could you specify city index : \n')
+        print("1 for {} \n2 for {} \n3 for {}".format(
+            'chicago', 'new york city', 'washington'))
+        user_input = input()
+        try:
+            city_index = int(user_input)
+            if(city_index in range(1, 4)):
+                city = city_names.get(city_index)
+                print("you select index: {} for city name : {}".format(
+                    city_index, city))
+                break
+            else:
+                raise Exception('Invalid range, choose from 1 to 3 values\n')
+        except ValueError:
+            print('Invalid input format, please provide a valid int\n')
+        except Exception as error:
+            print(error)
+        except KeyboardInterrupt:
+            print('Terminating Program, Goodbye :) \n')
 
     # get user input for month (all, january, february, ... , june)
+    print('-'*40)
+
+    while True:
+        print('Secondly, could you specify month index : \n')
+        print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n8 for {}\n9 for {}\n10 for {}\n11 for {}\n12 for {}\n13 for {}".format(
+            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'all'))
+        user_input = input()
+        try:
+            month_index = int(user_input)
+            if(month_index in range(1, 14)):
+                month = month_names.get(month_index)
+                print("you select index: {} for month name : {}".format(
+                    month_index, month))
+                break
+            else:
+                raise Exception('Invalid range, choose from 1 to 12 values\n')
+        except ValueError:
+            print('Invalid input format, please provide a valid int\n')
+        except Exception as error:
+            print(error)
+        except KeyboardInterrupt:
+            print('Terminating Program, Goodbye :) \n')
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
+    print('-'*40)
+
+    while True:
+        print('Finally, could you specify day of week index : \n')
+        print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n8 for {}".format(
+            'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'all'))
+        user_input = input()
+        try:
+            day_index = int(user_input)
+            if(day_index in range(1, 9)):
+                day = days_names.get(day_index)
+                print("you select index: {} for month name : {}".format(
+                    day_index, day))
+                break
+            else:
+                raise Exception('Invalid range, choose from 1 to 8 values\n')
+        except ValueError:
+            print('Invalid input format, please provide a valid int\n')
+        except Exception as error:
+            print(error)
+        except KeyboardInterrupt:
+            print('Terminating Program, Goodbye :) \n')
 
     print('-'*40)
     return city, month, day
@@ -133,6 +214,12 @@ def user_stats(df):
 def main():
     while True:
         city, month, day = get_filters()
+        print(city)
+        print(month)
+        print(day)
+        break
+
+        """
         df = load_data(city, month, day)
         print(df)
         time_stats(df)
@@ -143,6 +230,7 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
+"""
 
 
 if __name__ == "__main__":
