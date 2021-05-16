@@ -3,7 +3,8 @@ This is a repo for the professional Data Analysis Professional track on Udacity
 
 # Problem Description
 *Interactive type:
--Would you like to see data for Chicago, New York, or Washington?
+-Would you like to see data for Chicago, New York, or Washington?  
+
 -Would you like to filter the data by month, day, or not at all?
 -(If they chose month) Which month - January, February, March, April, May, or June?
 -(If they chose day) Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday?
