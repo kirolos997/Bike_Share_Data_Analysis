@@ -9,11 +9,11 @@ CITY_DATA = {'chicago': 'chicago.csv',
 
 city_names = {1: 'chicago', 2: 'new york city', 3: 'washington'}
 
+# this is a dictionary used to map each month to a number for better performance and reducing errors
 month_names = {1: 'january', 2: 'february', 3: 'march',
-               4: 'april', 5: 'may', 6: 'june',
-               7: 'july', 8: 'august', 9: 'september',
-               10: 'october', 11: 'november', 12: 'december', 13: 'all'}
+               4: 'april', 5: 'may', 6: 'june', 7: 'all'}
 
+# this is a dictionary used to map each day to a number for better performance and reducing errors
 days_names = {1: 'saturday', 2: 'sunday', 3: 'monday',
               4: 'tuesday', 5: 'wednesday', 6: 'thursday',
               7: 'friday', 8: 'all'}
@@ -28,6 +28,7 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
+    # variables that the function will return
     city = ''
     month = ''
     day = ''
@@ -44,17 +45,28 @@ def get_filters():
         try:
             city_index = int(user_input)
             if(city_index in range(1, 4)):
+
+                # in case the user input is in valid state only
                 city = city_names.get(city_index)
                 print("you select index: {} for city name : {}".format(
                     city_index, city))
                 break
+
             else:
+                # in case the user chooses a number outside the range, i will raise an exception
                 raise Exception('Invalid range, choose from 1 to 3 values\n')
+
+        # Error handling
         except ValueError:
+            # if user provides string instead of number
             print('Invalid input format, please provide a valid int\n')
+
         except Exception as error:
+            # if user provides chooses a number outside the range,
             print(error)
+
         except KeyboardInterrupt:
+            # if user wants to terminate the program
             print('Terminating Program, Goodbye :) \n')
 
     # get user input for month (all, january, february, ... , june)
@@ -62,18 +74,18 @@ def get_filters():
 
     while True:
         print('Secondly, could you specify month index : \n')
-        print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n8 for {}\n9 for {}\n10 for {}\n11 for {}\n12 for {}\n13 for {}".format(
-            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'no filter'))
+        print("1 for {} \n2 for {} \n3 for {}\n4 for {}\n5 for {}\n6 for {}\n7 for {}\n".format(
+            'January', 'February', 'March', 'April', 'May', 'June', 'no filter'))
         user_input = input()
         try:
             month_index = int(user_input)
-            if(month_index in range(1, 14)):
+            if(month_index in range(1, 8)):
                 month = month_names.get(month_index)
                 print("you select index: {} for month name : {}".format(
                     month_index, month))
                 break
             else:
-                raise Exception('Invalid range, choose from 1 to 12 values\n')
+                raise Exception('Invalid range, choose from 1 to 7 values\n')
         except ValueError:
             print('Invalid input format, please provide a valid int\n')
         except Exception as error:
@@ -226,6 +238,10 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
+
+def display_raw_data(df):
+    print('l')
 
 
 def main():
