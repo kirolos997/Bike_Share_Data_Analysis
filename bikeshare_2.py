@@ -37,25 +37,6 @@ def load_data(city, month, day):
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
-    """
-    import pandas as pd
-
-
-CITY_DATA = {'chicago': 'chicago.csv',
-             'new york city': 'new_york_city.csv',
-             'washington': 'washington.csv'}
-
-
-def load_data(city, month, day):
-    """
-    Loads data for the specified city and filters by month and day if applicable.
-
-    Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    Returns:
         df - pandas DataFrame containing city data filtered by month and day
     """
 
@@ -151,9 +132,8 @@ def user_stats(df):
 
 def main():
     while True:
-        #city, month, day = get_filters()
-        #df = load_data(city, month, day)
-        df = load_data("chicago", "april", "friday")
+        city, month, day = get_filters()
+        df = load_data(city, month, day)
         print(df)
         time_stats(df)
         station_stats(df)
