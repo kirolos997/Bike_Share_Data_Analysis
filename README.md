@@ -31,6 +31,15 @@ In this project, you will make use of Python to explore data related to bike sha
 
 3-A terminal application (Terminal on Mac and Linux or Cygwin on Windows).
 
+# Steps to run the code
+- clone the repo. 
+- open the code using a code editor. 
+- open terminal. 
+- rub the .py file after making sure you are standind in the same directory where the .py file exists
+
+# Side Note
+- the .csv files could not be uploaded as the size exceeds 25 Mb, so try to google them :)
+
 
 
 
