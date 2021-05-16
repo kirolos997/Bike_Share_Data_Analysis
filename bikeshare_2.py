@@ -192,15 +192,17 @@ def station_stats(df):
 
     # display most commonly used start station
     common_start = df['Start Station'].mode()[0]
-    print("Most commonly used start station:{}\n".format(common_start))
+    print("Most commonly used start station:\n{}\n".format(common_start))
 
     # display most commonly used end station
     common_end = df['End Station'].mode()[0]
-    print("Most commonly used end station:{}\n".format(common_end))
+    print("Most commonly used end station:\n{}\n".format(common_end))
 
     # display most frequent combination of start station and end station trip
-    print(df.loc[(df['Start Station'] == common_start)
-                 & (df['End Station'] == common_end)])
+    df['combination_col'] = df['Start Station'] + " to " + df['End Station']
+    most_freq_com = df['combination_col'].mode()[0]
+    print("Most frequent combination of start station and end station trip:\n{}\n".format(
+        most_freq_com))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -231,10 +233,31 @@ def user_stats(df):
     start_time = time.time()
 
     # Display counts of user types
+    user_types = df['User Type'].value_counts()
+    print("Counts of user types:\n{}\n".format(user_types))
 
-    # Display counts of gender
+    # if the data frame does not have the gender and birth year information
+    if (('Gender' in df) and ('Birth Year' in df)):
+        # Display counts of gender
+        user_gender = df['Gender'].value_counts()
+        print("Counts of user gender:\n{}\n".format(user_gender))
 
-    # Display earliest, most recent, and most common year of birth
+        # Display earliest, most recent, and most common year of birth
+
+        # 1- display most common year
+        most_common_year = df['Birth Year'].mode()[0]
+        print("Most common year :\n{}\n".format(most_common_year))
+
+        # 2- display earliest year
+        earliest_year = df['Birth Year'].min()
+        print("Earliest year :\n{}\n".format(earliest_year))
+
+        # 3- display recent year
+        recent_year = df['Birth Year'].max()
+        print("Most recent year :\n{}\n".format(recent_year))
+
+    else:
+        print("Sorry the data file doesn't have information about gender and birth year\n")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -252,6 +275,7 @@ def main():
         print(df)
         station_stats(df)
         trip_duration_stats(df)
+        user_stats(df)
 
         break
 
@@ -259,7 +283,7 @@ def main():
        
        
       
-        user_stats(df)
+       
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
