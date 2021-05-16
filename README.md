@@ -35,7 +35,7 @@ In this project, you will make use of Python to explore data related to bike sha
 - clone the repo. 
 - open the code using a code editor. 
 - open terminal. 
-- rub the .py file after making sure you are standind in the same directory where the .py file exists
+- run the .py file after making sure you are standing in the same directory where the .py file exists
 
 # Side Note
 - the .csv files could not be uploaded as the size exceeds 25 Mb, so try to google them :)
